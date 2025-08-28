@@ -22,9 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Đăng ký Service Worker
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register(baseURL + '/firebase-messaging-sw.js')
+        const version = new Date().getTime(); // Sử dụng timestamp làm phiên bản
+        navigator.serviceWorker.register(`${baseURL}/firebase-messaging-sw.js?v=${version}`)
           .then((registration) => {
             console.log('Service Worker đã được đăng ký:', registration);
+
+            messaging.useServiceWorker(registration);
           })
           .catch((error) => {
             console.error('Lỗi khi đăng ký Service Worker:', error);
