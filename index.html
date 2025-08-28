@@ -27,6 +27,9 @@
   </div>
 
   <script>
+    window.onerror = function (message, source, lineno, colno, error) {
+        console.error('Global Error:', { message, source, lineno, colno, error });
+    };
     if (!('serviceWorker' in navigator)) {
         console.error('Trình duyệt không hỗ trợ Service Worker.');
     }
