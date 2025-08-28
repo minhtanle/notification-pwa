@@ -22,9 +22,9 @@ console.log('[firebase-messaging-sw.js] Initial');
 messaging.onBackgroundMessage((payload) => {
   console.log('[firebase-messaging-sw.js] Nhận thông báo nền:', payload);
 
-  const notificationTitle = 'SW ' + payload.notification.title;
+  const notificationTitle = 'SW ' + payload.data.title;
   const notificationOptions = {
-    body: payload.notification.body,
+    body: payload.data.body,
     icon: '/icon-192.png', // Đường dẫn đến icon của thông báo
   };
 
