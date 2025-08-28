@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         measurementId: "G-SHFKPPP2DM"
     };
 
-    const vapidKey = 'BDi3xzJpUidCPQbHzQ1wdaojtTwcoHK3toUWBOdGfM00CMy5PLwZNx3YAEdakuKc8wZ65EXPfy6eW'
+    const vapidKey = 'BDi3xzJpUidCPQbHzQ1wdaojtTwcoHK3toUWBOdGfM00CMy5PLwZNx3YAEdakuKc8wZ65EXPfy6eW-1T0ih4Fds'
 
     firebase.initializeApp(firebaseConfig);
     const messaging = firebase.messaging();
