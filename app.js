@@ -1,3 +1,5 @@
+const baseURL = 'https://minhtanle.github.io/notification-pwa';
+
 document.addEventListener('DOMContentLoaded', function () {
     const firebaseConfig = {
         apiKey: "AIzaSyC1kOGCzjIJv9_tNyp4mV3R8Peiyz24K5c",
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Đăng ký Service Worker
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/firebase-messaging-sw.js')
+        navigator.serviceWorker.register(baseURL + '/firebase-messaging-sw.js')
           .then((registration) => {
             console.log('Service Worker đã được đăng ký:', registration);
           })
