@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         messagesBox.appendChild(messageElement);
 
         if ('Notification' in window) {
-            const notification = new Notification(payload.notification.title, {
+            const notification = new Notification('App ' + payload.notification.title, {
                 body: payload.notification.body,
                 icon: 'icon-192.png'
             });
