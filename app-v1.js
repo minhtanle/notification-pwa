@@ -31,21 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Đăng ký Service Worker
-    if ('serviceWorker' in navigator) {
-        const version = new Date().getTime();
-        navigator.serviceWorker.register(`${baseURL}/firebase-messaging-sw.js?v=${version}`)
-            .then((registration) => {
-                console.log('Service Worker đã được đăng ký:', registration);
-                // messaging.useServiceWorker(registration);
-            })
-            .catch((error) => {
-                console.error('Lỗi khi đăng ký Service Worker:', error);
-            });
-    } else {
-        console.warn('Trình duyệt không hỗ trợ Service Worker.');
-    }
-
     // === Kiểm tra nếu đang ở chế độ PWA mới load Firebase ===
     function isInStandaloneMode() {
         return (window.matchMedia('(display-mode: standalone)').matches) ||
@@ -93,7 +78,20 @@ document.addEventListener('DOMContentLoaded', function () {
             const fcmTokenInput = document.getElementById('fcm-token');
             const messagesBox = document.getElementById('messages-box');
 
-
+            // Đăng ký Service Worker
+            if ('serviceWorker' in navigator) {
+                const version = new Date().getTime();
+                navigator.serviceWorker.register(`${baseURL}/firebase-messaging-sw.js?v=${version}`)
+                    .then((registration) => {
+                        console.log('Service Worker đã được đăng ký:', registration);
+                        messaging.useServiceWorker(registration);
+                    })
+                    .catch((error) => {
+                        console.error('Lỗi khi đăng ký Service Worker:', error);
+                    });
+            } else {
+                console.warn('Trình duyệt không hỗ trợ Service Worker.');
+            }
 
             // Bật thông báo
             enableNotificationsButton.addEventListener('click', () => {
