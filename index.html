@@ -7,6 +7,12 @@
   <link rel="manifest" href="https://minhtanle.github.io/notification-pwa/manifest.json">
 
   <!-- <script src="https://minhtanle.github.io/notification-pwa/app-v2.js"></script> -->
+
+    <!-- Thêm CSS của add-to-homescreen -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/add-to-homescreen@3.2.6/dist/style/addtohomescreen.min.css">
+
+  <!-- Thêm JS của add-to-homescreen -->
+  <script src="https://cdn.jsdelivr.net/npm/add-to-homescreen@3.2.6/dist/addtohomescreen.min.js"></script>
 </head>
 <body>
   <h1>Ứng dụng nhận thông báo</h1>
@@ -39,6 +45,29 @@
   <script>eruda.init();</script>
 
   <script>
+
+    // Kiểm tra nếu đang chạy trên iOS và không có sự kiện beforeinstallprompt
+    function isiOS() {
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    if (isiOS() && !('beforeinstallprompt' in window)) {
+      // Cấu hình add-to-homescreen
+      addToHomescreen({
+        appID: 'notification-pwa', // ID duy nhất cho ứng dụng
+        lifespan: 0, // Hiển thị banner mỗi lần tải trang (có thể tùy chỉnh)
+        maxDisplayCount: 3, // Số lần banner được hiển thị
+        message: 'Nếu bạn muốn sử dụng ứng dụng một cách thuận tiện hơn, hãy thêm ứng dụng vào màn hình chính của bạn.', // Tùy chỉnh thông điệp
+        modal: true, // Hiển thị dưới dạng modal thay vì banner
+        startDelay: 1, // Thời gian chờ trước khi hiển thị banner (giây)
+        autostart: true // Tự động hiển thị
+      });
+
+      console.log('Hướng dẫn Add to Home Screen đã được kích hoạt.');
+    } else {
+      console.log('Trình duyệt hỗ trợ beforeinstallprompt hoặc không phải iOS.');
+    }
+
     const baseURL = 'https://minhtanle.github.io/notification-pwa';
 
     console.log('Thông tin trình duyệt:', navigator.userAgent);
