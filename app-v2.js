@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Đăng ký Service Worker chính
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register(`${baseURL}/main-sw.js`)
+        navigator.serviceWorker.register(`${baseURL}/sw.js`)
             .then((registration) => {
                 console.log('Service Worker chính đã được đăng ký:', registration);
             })
