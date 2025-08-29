@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Notification App</title>
   <link rel="manifest" href="https://minhtanle.github.io/notification-pwa/manifest.json">
-  <script src="https://minhtanle.github.io/notification-pwa/firebase-app.js"></script>
-  <script src="https://minhtanle.github.io/notification-pwa/firebase-messaging.js"></script>
 </head>
 <body>
   <h1>Ứng dụng nhận thông báo</h1>
 
   <!-- Nút bật thông báo -->
   <button id="enable-notifications" aria-label="Bật thông báo">Bật thông báo</button>
+
+  <!-- Nút cài đặt PWA -->
+  <button id="install-pwa" aria-label="Cài đặt ứng dụng" style="display:none;">Cài đặt ứng dụng</button>
 
   <!-- Ô input hiển thị FCM Token -->
   <div>
@@ -30,18 +31,10 @@
     window.onerror = function (message, source, lineno, colno, error) {
         console.error('Global Error:', { message, source, lineno, colno, error });
     };
-    if (!('serviceWorker' in navigator)) {
-        console.error('Trình duyệt không hỗ trợ Service Worker.');
-    }
-    if (!('Notification' in window)) {
-        console.error('Trình duyệt không hỗ trợ Notification API.');
-    }
-    if (!firebase.messaging.isSupported()) {
-        console.error('Firebase Messaging không được hỗ trợ trên trình duyệt này.');
-    }
   </script>
 
-  <script src="https://minhtanle.github.io/notification-pwa/app.js?v=1.0.1"></script>
+  <!-- Load app.js -->
+  <script src="https://minhtanle.github.io/notification-pwa/app.js?v=1.0.3"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
   <script>eruda.init();</script>
