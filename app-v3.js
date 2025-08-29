@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         navigator.serviceWorker.register(`${baseURL}/firebase-messaging-sw.js?v=${version}`)
             .then((registration) => {
                 console.log('Service Worker đã được đăng ký:', registration);
-                messaging.useServiceWorker(registration);
+                // messaging.useServiceWorker(registration);
             })
             .catch((error) => {
                 console.error('Lỗi khi đăng ký Service Worker:', error);
