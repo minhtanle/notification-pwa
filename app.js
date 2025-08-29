@@ -123,5 +123,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     } else {
         alert('Vui lòng cài đặt ứng dụng để sử dụng.');
+        installBtn.style.display = 'inline-block';
     }
 });
