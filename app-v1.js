@@ -1,17 +1,23 @@
 const baseURL = 'https://minhtanle.github.io/notification-pwa';
 
+console.log('Thông tin trình duyệt:', navigator.userAgent);
+
 document.addEventListener('DOMContentLoaded', function () {
     // === Xử lý nút cài đặt PWA ===
     let deferredPrompt;
     const installBtn = document.getElementById('install-pwa');
 
     window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('Sự kiện beforeinstallprompt được kích hoạt'); // Thêm log
+
         e.preventDefault();
         deferredPrompt = e;
         installBtn.style.display = 'inline-block';
     });
 
     installBtn.addEventListener('click', () => {
+        console.log('Người dùng nhấn nút cài đặt'); // Thêm log
+
         if (deferredPrompt) {
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
