@@ -90,14 +90,18 @@
                 });
             }
 
-            Promise.all([
-                loadScript('https://minhtanle.github.io/notification-pwa/firebase-app.js'),
-                loadScript('https://minhtanle.github.io/notification-pwa/firebase-messaging.js')
-            ]).then(() => {
-                initFirebaseMessaging();
-            }).catch((err) => {
-                console.error('Không thể load Firebase scripts:', err);
-            });
+            loadScript('https://minhtanle.github.io/notification-pwa/firebase-app.js')
+              .then(() => {
+                  console.log('Đã tải xong firebase-app.js');
+                  return loadScript('https://minhtanle.github.io/notification-pwa/firebase-messaging.js');
+              })
+              .then(() => {
+                  console.log('Đã tải xong firebase-messaging.js');
+                  initFirebaseMessaging(); // Khởi tạo Firebase Messaging sau khi tải xong
+              })
+              .catch((err) => {
+                  console.error('Không thể tải Firebase scripts:', err);
+              });
 
             function initFirebaseMessaging() {
                 const firebaseConfig = {
