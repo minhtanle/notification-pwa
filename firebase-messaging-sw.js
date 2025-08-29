@@ -28,5 +28,5 @@ messaging.onBackgroundMessage((payload) => {
     icon: '/icon-192.png', // Đường dẫn đến icon của thông báo
   };
 
-  self.registration.showNotification(notificationTitle, notificationOptions);
+  // self.registration.showNotification(notificationTitle, notificationOptions);
 });
