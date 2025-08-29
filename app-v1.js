@@ -3,6 +3,18 @@ const baseURL = 'https://minhtanle.github.io/notification-pwa';
 console.log('Thông tin trình duyệt:', navigator.userAgent);
 
 document.addEventListener('DOMContentLoaded', function () {
+
+    // Đăng ký Service Worker chính
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register(`${baseURL}/main-sw.js`)
+            .then((registration) => {
+                console.log('Service Worker chính đã được đăng ký:', registration);
+            })
+            .catch((error) => {
+                console.error('Lỗi khi đăng ký Service Worker chính:', error);
+            });
+    }
+
     // === Xử lý nút cài đặt PWA ===
     let deferredPrompt;
     const installBtn = document.getElementById('install-pwa');
